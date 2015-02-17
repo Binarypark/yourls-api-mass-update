@@ -24,10 +24,10 @@ function api_mass_update() {
 	}
 	
 	global $ydb;
-	$query = "UPDATE `".mysql_real_escape_string(YOURLS_DB_TABLE_URL)."` SET `url` = REPLACE(`url`, "
-					. "'".mysql_real_escape_string($_REQUEST['oldhost'])."', "
-					. "'".mysql_real_escape_string($_REQUEST['newhost'])."') "
-					. "WHERE `url` LIKE '".mysql_real_escape_string($_REQUEST['oldhost'])."%'";
+	$query = "UPDATE `".yourls_escape(YOURLS_DB_TABLE_URL)."` SET `url` = REPLACE(`url`, "
+					. "'".yourls_escape($_REQUEST['oldhost'])."', "
+					. "'".yourls_escape($_REQUEST['newhost'])."') "
+					. "WHERE `url` LIKE '".yourls_escape($_REQUEST['oldhost'])."%'";
 	
 	$result = $ydb->query($query);
 	
